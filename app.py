@@ -10,7 +10,7 @@ try:
     with open("scaler.sav", "rb") as file:
         scaler = pickle.load(file)
 except FileNotFoundError:
-    st.error("❌ Model or scaler file not found! Please check the files and restart the app.")
+    st.error(" Model or scaler file not found! Please check the files and restart the app.")
     st.stop()
 
 # Apply simple styling
@@ -39,7 +39,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Page selection
-st.sidebar.title("🔍 Navigation")
+st.sidebar.title(" Navigation")
 page = st.sidebar.radio("Go to:", ["Overview", "Predictor", "Extra Info"])
 
 if page == "Overview":
@@ -55,7 +55,7 @@ if page == "Overview":
     """)
 
 elif page == "Predictor":
-    st.title("📊 Student Performance Predictor")
+    st.title(" Student Performance Predictor")
     with st.form("prediction_form"):
         st.subheader("Enter Student Details")
         attendance = st.slider("Attendance (%)", 0, 100, 90)
@@ -77,11 +77,11 @@ elif page == "Predictor":
 
         input_scaled = scaler.transform(input_data)
         prediction = model.predict(input_scaled)
-        result = "✅ Pass" if prediction[0] == 1 else "❌ Fail"
+        result = " Pass" if prediction[0] == 1 else " Fail"
         st.markdown(f"### Prediction: {result}")
 
 elif page == "Extra Info":
-    st.title("ℹ️ Extra Information")
+    st.title("ℹ Extra Information")
     st.markdown("""
     This application predicts student performance based on several factors like attendance, study habits, and anxiety levels.
     
